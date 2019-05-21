@@ -13,17 +13,26 @@
       </a>
     </div> 
 
-    <div class="ui message">
+    <div class="ui message" *ngIf="text !== undefined">
       <i class="close icon"></i>
       <div class="header">
-      RELATORIO
+        RELATORIO
       </div>
-
-      <ul class="list" *ngIf="text !== undefined">
-        <li>{{text?.data?.produto?.name}}</li>
-        <li>{{text?.data?.produto?.value | currency: 'BRL'}}</li>
+      <p>Produto</p>
+      <ul class="list">
+        <li>Produto: {{text?.data[0]?.produto?.name}}</li>
+        <li>Valor: {{text?.data[0]?.produto?.value | currency: 'BRL'}}</li>
       </ul>
-      <pre>{{text | json}}</pre>
+      <p>Detalhes do envio</p>
+      <ul class="list">
+          <li>Bairro: {{text?.data[1]?.endereco?.bairro}}</li>
+          <li>CEP: {{text?.data[1]?.endereco?.cep}}</li>
+          <li>Complemento: {{text?.data[1]?.endereco?.complemento}}</li>
+          <li>Localidade: {{text?.data[1]?.endereco?.localidade}}</li>
+          <li>Logradouro: {{text?.data[1]?.endereco?.logradouro}}</li>
+          <li>Número: {{text?.data[1]?.endereco?.numero}}</li>
+          <li>UF: {{text?.data[1]?.endereco?.uf}}</li>
+        </ul>
     </div>
    
       <form class="ui form ui segment" [formGroup]="form" *ngIf="formVisible">
@@ -40,7 +49,6 @@
           <input type="text" name="complemento" formControlName="complemento">
         </div>
         <button class="ui button" type="button" (click)="submit()" [disabled]="form.invalid">Enviar</button>
-        {{text | json}}
       </form>
 
 
@@ -66,12 +74,7 @@
             </div>
           </td>
           <td>
-            <div class="ui red vertical animated button" (click)="excluir(produto.id)" tabindex="0">
-              <div class="hidden content">Excluir {{produto.id}}</div>
-              <div class="visible content">
-                <i class="trash icon"></i>
-              </div>
-            </div>
+             <button class="ui red {{isLoading?.isLoading && produto.id == isLoading?.id ? 'loading' : '' }} button" (click)="excluir(produto.id)">Excluir</button>
           </td>
         </tr>
       </tbody>

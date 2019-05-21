@@ -14,6 +14,7 @@ export class AppComponent  implements OnInit {
   public produtos: any;
   public formVisible = false;
   public text: any;
+  public isLoading: any = false;
   title = 'app';
 
   constructor(private http: HttpClient, private fb: FormBuilder) {}
@@ -23,7 +24,7 @@ export class AppComponent  implements OnInit {
   }
 
   getProdutos() {
-    return this.http.get(`http://localhost:5001/produtos`)
+    return this.http.get(`http://172.20.2.202:5001/produtos`)
     .subscribe((produtos: any) => {
       produtos['isBOSTA'] = false;
       this.produtos = produtos.data;
@@ -31,8 +32,10 @@ export class AppComponent  implements OnInit {
   }
 
   excluir(id) {
-    return this.http.delete(`http://localhost:5001/produtos/${id}`).subscribe(result => {
+    this.isLoading = {id: id, isLoading: true};
+    return this.http.delete(`http://172.20.2.202:5001/produtos/${id}`).subscribe(result => {
       console.log(result);
+      this.isLoading = false;
       this.getProdutos();
     });
   }
@@ -43,7 +46,7 @@ export class AppComponent  implements OnInit {
       value: Math.random() * 65536
     };
 
-    return this.http.post(`http://localhost:5001/produtos`, data).subscribe(result => {
+    return this.http.post(`http://172.20.2.202:5001/produtos`, data).subscribe(result => {
       console.log(result);
       this.getProdutos();
     });
@@ -60,7 +63,7 @@ export class AppComponent  implements OnInit {
   }
   submit() {
     $('.segment').dimmer('show');
-    return this.http.post(`http://localhost:5001/checkout`, this.form.value).subscribe(result => {
+    return this.http.post(`http://172.20.2.202:5001/checkout`, this.form.value).subscribe(result => {
       this.text = result;
       $('.segment').dimmer('hide');
       this.getProdutos();
