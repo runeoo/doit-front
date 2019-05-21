@@ -11,11 +11,42 @@
       <a class="ui basic red left pointing label">
        Atualmente: {{produtos?.length}} produtos cadastrados
       </a>
+    </div> 
+
+    <div class="ui message">
+      <i class="close icon"></i>
+      <div class="header">
+      RELATORIO
+      </div>
+
+      <ul class="list" *ngIf="text !== undefined">
+        <li>{{text?.data?.produto?.name}}</li>
+        <li>{{text?.data?.produto?.value | currency: 'BRL'}}</li>
+      </ul>
+      <pre>{{text | json}}</pre>
     </div>
-    <table class="ui very compact table">
+   
+      <form class="ui form ui segment" [formGroup]="form" *ngIf="formVisible">
+        <div class="field">
+          <label>CEP</label>
+          <input type="text" name="cep" formControlName="cep">
+        </div>
+        <div class="field">
+          <label>NUMERO</label>
+          <input type="number" name="numero" formControlName="numero">
+        </div>
+        <div class="field">
+          <label>COMPLEMENTO</label>
+          <input type="text" name="complemento" formControlName="complemento">
+        </div>
+        <button class="ui button" type="button" (click)="submit()" [disabled]="form.invalid">Enviar</button>
+        {{text | json}}
+      </form>
+
+
+    <table class="ui celled table">
       <thead>
         <tr>
-          
           <th>Nome</th>
           <th>Valor</th>
           <th>Enviar</th>
@@ -27,7 +58,7 @@
           <td>{{produto.name}}</td>
           <td>{{produto.value | currency: 'BRL'}}</td>
           <td>
-            <div class="ui vertical animated button" tabindex="0">
+            <div class="ui vertical animated button" (click)="send(produto)" tabindex="0">
               <div class="hidden content">Enviar</div>
               <div class="visible content">
                 <i class="share icon"></i>
