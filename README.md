@@ -1,22 +1,39 @@
-[![N|Runeoo](https://avatars0.githubusercontent.com/u/48844770?s=200&v=4)](https://runeoo.com.br/)
-# DOIT-FRONT
-DOIT-FRONT é um aplicativo criado com a finalidade de entregar uma atividade na faculdade impacta com o time:
-- Abraao Ylgner da Rocha Silva - 1600301
-- Bruno Borges Furukawa - 1601320
-- Diego João Gallego - 1601084
-- Igor Gusmão Laur - 1601230
-- Leonardo Laurino Serinhano - 1600925
-- Lincoln Morais de Melo - 1601212
-- Kaique Jacyntho Silveira dos Santos - 1601006
+# Commands In Terminal
+  `cd semantic`
+  <br />
+  `npm install semantic-ui --save`.
+  <br />
+  `npm install jquery --save`.
+  <br />
+  If you Create Separete Project Must Use above commands
+ScreenShot My Project
+![alt text](https://github.com/SUDOARSDEV/Semantic-UI/blob/master/src/assets/s1.png)
+![alt text](https://github.com/SUDOARSDEV/Semantic-UI/blob/master/src/assets/s2.png)
 
-### Tecnologias
+# Semantic
 
-* [Python](https://www.python.org/) - backend
-* [Angular](https://angular.io/) - Frontend aplication
-* [SQLite](https://www.sqlite.org/index.html) - database
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
-License
-----
+## Development server
 
-GNU
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

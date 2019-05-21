@@ -1,0 +1,70 @@
+<body>
+ 
+  <div class="ui text container">
+    
+    <h2 class="ui header">Atividade continua 09 - Sistemas Distribuidos</h2>
+    <!-- {{produtos?.PRODUTOS | json}} -->
+    <div (click)="criar()" class="ui labeled button" tabindex="0">
+      <div class="ui red button">
+        <i class="plus icon"></i> Adicionar
+      </div>
+      <a class="ui basic red left pointing label">
+       Atualmente: {{produtos?.length}} produtos cadastrados
+      </a>
+    </div>
+    <table class="ui very compact table">
+      <thead>
+        <tr>
+          
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Enviar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{produto.name}}</td>
+          <td>{{produto.value | currency: 'BRL'}}</td>
+          <td>
+            <div class="ui vertical animated button" tabindex="0">
+              <div class="hidden content">Enviar</div>
+              <div class="visible content">
+                <i class="share icon"></i>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="ui red vertical animated button" (click)="excluir(produto.id)" tabindex="0">
+              <div class="hidden content">Excluir {{produto.id}}</div>
+              <div class="visible content">
+                <i class="trash icon"></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
+  </body>
+  
+  <div class="ui modal">
+      <i class="close icon"></i>
+      <div class="header">
+        Modal Title
+      </div>
+      <div class="image content">
+        <div class="image">
+          An image can appear on left or an icon
+        </div>
+        <div class="description">
+          A description can appear on the right
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui button">Cancel</div>
+        <div class="ui button">OK</div>
+      </div>
+    </div>
